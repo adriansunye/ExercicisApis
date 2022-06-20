@@ -52,7 +52,7 @@
   cursor: pointer;
 }
 
-.btn:hover {
+.btn: {
   transform: scale(0.98);
 }
 
