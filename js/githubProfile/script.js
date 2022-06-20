@@ -9,23 +9,6 @@ form.addEventListener( "submit", function (evt) {
     getUser();
   });
 
-async function getUser() {
-  try {
-    destroyCard();
-    const userData = await fetch (APIURL + user.value, {
-        headers: {
-            'Accept': 'application/json',
-        }
-    });
-      if (!userData.ok) {
-          createCard(true);   
-      }
-      
-  } catch (error) {
-    console.error("error");
-  }
-}
-
 async function getUser(){
     destroyCard();
     const userData = await fetch (APIURL + user.value, {
@@ -100,7 +83,7 @@ async function getUser(){
         repoList.setAttribute('id', 'repos');
         repoList.setAttribute('class', 'row');
 
-        for(let i = 1; i < repositories.length; i++){
+        for(let i = 0; i < repositories.length; i++){
             repoListNode[i] = document.createElement("li");
             document.getElementById('repos').appendChild(repoListNode[i]);
             repoListNode[i].setAttribute('class', 'repo');
@@ -126,7 +109,7 @@ function createCard(bool){
 }
 
 function destroyCard(){
-    let main =document.getElementById('main');
+    let main = document.getElementById('main');
     if(main.hasChildNodes()){
         main.removeChild(main.childNodes[0]);
        }
